@@ -1,0 +1,22 @@
+-- Aula - Privilégios
+
+
+CREATE ROLE admin LOGIN PASSWORD '123456';
+CREATE DATABASE meudb_admin WITH owner = admin;
+\c meudb_admin;
+CREATE SCHEMA meu_esquema;
+
+
+-- Sintaxe
+
+GRANT algum_privilegio TO algum_role;
+
+GRANT ALL ON ALL TABLES IN SCHEMA public TO admin WITH GRANT OPTION;
+
+GRANT SELECT, REFERENCES, TRIGGER ON ALL TABLES IN SCHEMA meu_esquema TO PUBLIC;
+
+GRANT SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA meu_esquema TO PUBLIC;
+
+GRANT USAGE ON SCHEMA meu_esquema TO PUBLIC;
+
+REVOKE EXECUTE ON ALL FUNCTIONS IN SCHEMA meu_esquema FROM PUBLIC;
